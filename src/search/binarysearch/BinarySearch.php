@@ -4,30 +4,30 @@ declare(strict_types=1);
 
 namespace Search\BinarySearch;
 
+error_reporting(0);
+
 final class BinarySearch
 {
-    public static function search(array $list, int $target): int
+    public static function search(array $list, int $start, int $end, int $target): int
     {
-        $bottom = 0;
-
-        $top = count($list);
-
-        while ($bottom < $top) {
-            $middle = (int) floor(($bottom + $top) / 2);
-
-            $guess = $list[$middle];
-
-            if ($guess === $target) {
-                return $middle;
-            }
-
-            if ($guess > $target) {
-                $top = $middle - 1;
-            } else {
-                $bottom = $middle + 1;
-            }
+        if ($start > $end) {
+            return -1;
         }
 
-        return -1;
+        $middle = (int) floor(($start + $end) / 2);
+
+        $guess = $list[$middle];
+
+        if ($guess === $target) {
+            return $middle;
+        }
+
+        if ($guess > $target) {
+            return self::search($list, $start, $middle - 1, $target);
+        }
+
+        if ($guess < $target) {
+            return self::search($list, $middle + 1, $end, $target);
+        }
     }
 }
