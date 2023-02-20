@@ -3,14 +3,12 @@
 
 class BinarySearch {
   public:
+    static int search(std::vector<int> list, int start, int end, int target) {
+      if (start > end) {
+        return -1;
+      }
 
-  static int search(std::vector<int> list, int target) {
-    int bottom = 0;
-
-    int top = list.size();
-
-    while (bottom < top) {
-      int middle = floor((bottom + top) / 2);
+      int middle = floor((start + end) / 2);
 
       int guess = list[middle];
 
@@ -19,12 +17,9 @@ class BinarySearch {
       }
 
       if (guess > target) {
-        top = middle - 1;
-      } else {
-        bottom = middle + 1;
+        return search(list, 0, middle - 1, target);
       }
-    }
 
-    return -1;
-  }
+      return search(list, middle + 1, end, target);
+    }
 };
