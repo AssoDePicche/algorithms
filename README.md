@@ -5,3 +5,4 @@ This repository contains all the algorithms I learned during my studies for futu
 ## Domains
 
 - [Search](src/search/)
+- [Sort](src/sort/)
