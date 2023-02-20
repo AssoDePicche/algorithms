@@ -25,21 +25,9 @@ final class SelectionSort
 
     private static function min(array $list): int
     {
-        $min = $list[0];
+        $min = min($list);
 
-        $minIndex = 0;
-
-        $length = count($list);
-
-        for ($index = 1; $index < $length; $index++) {
-            if ($min > $list[$index]) {
-                $min = $list[$index];
-
-                $minIndex = $index;
-            }
-        }
-
-        return $minIndex;
+        return array_search($min, $list);
     }
 
     private static function copy(array $list, int $remove): array
