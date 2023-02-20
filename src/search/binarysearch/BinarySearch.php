@@ -26,8 +26,6 @@ final class BinarySearch
             return self::search($list, $start, $middle - 1, $target);
         }
 
-        if ($guess < $target) {
-            return self::search($list, $middle + 1, $end, $target);
-        }
+        return self::search($list, $middle + 1, $end, $target);
     }
 }
