@@ -32,18 +32,8 @@ final class SelectionSort
 
     private static function copy(array $list, int $remove): array
     {
-        $copy = [];
-
-        $length = count($list);
-
-        for ($i = 0; $i < $length; $i++) {
-            if ($i === $remove) {
-                continue;
-            }
-
-            $copy[] = $list[$i];
-        }
-
-        return $copy;
+        return array_filter($list, function ($x) use ($list, $remove) {
+            return $x !== $list[$remove];
+        });
     }
 }
