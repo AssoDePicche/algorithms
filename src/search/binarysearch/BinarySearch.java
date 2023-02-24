@@ -1,18 +1,18 @@
-public class BinarySearch {
-  public static int search(int[] list, int start, int end, int target) {
+public class BinarySearch<T extends Number> {
+  public int search(T[] list, int start, int end, T target) {
     if (start > end) {
       return -1;
     }
 
     int middle = (start + end) / 2;
 
-    int guess = list[middle];
+    T guess = list[middle];
 
-    if (guess == target) {
+    if (guess.equals(target)) {
       return middle;
     }
 
-    if (guess > target) {
+    if (guess.doubleValue() > target.doubleValue()) {
       return search(list, start, middle - 1, target);
     }
 
